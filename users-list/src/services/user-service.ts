@@ -7,7 +7,7 @@ export const api = axios.create({
 });
 
 export const getUsers = async () => {
-	const result = await axios.get("/");
+	const result = await api.get("/users");
 	return result.data;
 };
 
