@@ -15,19 +15,25 @@ function AddUser() {
 		mutate(data, {
 			onSuccess: () => reset(),
 		});
+		console.log(data);
 	};
 
 	return (
 		<div>
-			<form onSubmit={() => handleSubmit(onSubmit)}>
+			<form onSubmit={handleSubmit(onSubmit)}>
 				<input
 					{...register("name", { required: "username is required" })}
 					placeholder="username"
 				/>
 				{errors.name && <p>{errors.name.message}</p>}
-				<input {...register("email", { required: "" })} placeholder="email" />
+				<input
+					{...register("email", { required: "email is required" })}
+					placeholder="email"
+				/>
 				{errors.email && <p>{errors.email.message}</p>}
-				<button disabled={isPending}>Add User</button>
+				<button type="submit" disabled={isPending}>
+					Add User
+				</button>
 			</form>
 		</div>
 	);

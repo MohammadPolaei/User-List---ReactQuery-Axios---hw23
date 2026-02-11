@@ -12,6 +12,6 @@ export const getUsers = async () => {
 };
 
 export const createUser = async (user: User) => {
-	const result = await api.post("/", user);
+	const result = await api.post("/users", user);
 	return result.data;
 };
