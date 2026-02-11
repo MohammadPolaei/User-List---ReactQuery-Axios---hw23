@@ -27,12 +27,18 @@ function AddUser() {
 				/>
 				{errors.name && <p>{errors.name.message}</p>}
 				<input
-					{...register("email", { required: "email is required" })}
+					{...register("email", {
+						required: "email is required",
+						pattern: {
+							value: /\S+@\S+\.\S+/,
+							message: "Invalid email",
+						},
+					})}
 					placeholder="email"
 				/>
 				{errors.email && <p>{errors.email.message}</p>}
 				<button type="submit" disabled={isPending}>
-					Add User
+					{isPending ? "Adding into List ..." : "Add User"}
 				</button>
 			</form>
 		</div>
